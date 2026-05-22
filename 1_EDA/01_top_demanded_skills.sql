@@ -7,7 +7,7 @@ Question: What are the most in-demand skills for data engineers?
     providing insights into the most valuable skills for data engineers seeking remote work
 */
 
-select sd.skills,count(jpf.*) as demand_count
+select sd.skills,count(jpf.*) as demand_counts
 from skills_dim as sd
 inner join skills_job_dim as sjd on 
 sjd.skill_id = sd.skill_id  
@@ -17,7 +17,7 @@ where
     jpf.job_title_short = 'Data Engineer'
     and jpf.job_work_from_home = true
 group by sd.skills
-order by demand_count DESC
+order by demand_counts DESC
 limit 10;
 
 
